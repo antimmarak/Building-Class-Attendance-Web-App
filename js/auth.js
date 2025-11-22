@@ -3,7 +3,7 @@ async function loginUser(email, password) {
   try {
     const data = await authFetch('/auth/v1/token?grant_type=password', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON_KEY },
+      headers: { 'Content-Type': 'application/json', 'apikey': eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55ZHhoaXRqaXF0eGx1dXhvd2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4Mjc5NjQsImV4cCI6MjA3OTQwMzk2NH0._iGtoSu-tGkTx3gLEFDOO0Y9aKmPRpfaRExUfDBabDc },
       body: JSON.stringify({ email, password })
     });
     const access_token = data.access_token;

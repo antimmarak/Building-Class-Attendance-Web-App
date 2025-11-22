@@ -1,7 +1,7 @@
 // Supabase REST utilities (configure URL and anon key)
 const SUPABASE_URL = 'https://tpopvamtqwjjbpokmczw.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwb3B2YW10cXdqamJwb2ttY3p3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4MDI2NjksImV4cCI6MjA3OTM3ODY2OX0.3pr6TDBZlRXd8ra3d1S5oYWjyCPqVXoLaiKs8Zy_G2g';
-function isConfigured() { return Boolean(SUPABASE_URL) && Boolean(SUPABASE_ANON_KEY); }
+function isConfigured() { return Boolean(SUPABASE_URL) && Boolean(eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55ZHhoaXRqaXF0eGx1dXhvd2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4Mjc5NjQsImV4cCI6MjA3OTQwMzk2NH0._iGtoSu-tGkTx3gLEFDOO0Y9aKmPRpfaRExUfDBabDc); }
 
 const ADMIN_EMAILS = ['admin@antim.com'];
 
