@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Attendance | Attendance</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <script defer src="./js/supabase.js"></script>
+  <script defer src="./js/auth.js"></script>
+  <script defer src="./js/attendance.js"></script>
+</head>
+<body data-theme="light">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">Attendance</div>
+      <nav>
+        <a href="./dashboard.html">Dashboard</a>
+        <a class="active" href="./attendance.html">Attendance</a>
+        <a href="./students.html">Students</a>
+        <a href="./classes.html">Classes</a>
+        <a href="./subjects.html">Subjects</a>
+        <a href="./history.html">History</a>
+      </nav>
+      <button class="btn small" id="logoutBtn">Logout</button>
+    </aside>
+    <main class="content">
+      <header class="topbar">
+        <button class="icon" id="menuToggle">☰</button>
+        <div class="spacer"></div>
+        <button class="btn small" id="themeToggle">Toggle Theme</button>
+      </header>
+
+      <section class="card">
+        <h3>Mark Attendance</h3>
+        <div class="grid three">
+          <div class="form-field">
+            <label for="classSelect">Class</label>
+            <select id="classSelect"></select>
+          </div>
+          <div class="form-field">
+            <label for="subjectSelect">Subject</label>
+            <select id="subjectSelect"></select>
+          </div>
+          <div class="form-field">
+            <label>Date</label>
+            <input id="attendanceDate" type="date" />
+          </div>
+        </div>
+        <div id="studentList" class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="studentRows"></tbody>
+          </table>
+        </div>
+        <div class="actions">
+          <button id="loadStudentsBtn" class="btn">Load Students</button>
+          <button id="saveAttendanceBtn" class="btn primary">Save Attendance</button>
+        </div>
+        <div id="dailySummary" class="muted"></div>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAuthState({ requireAuth: true });
+      initLayoutControls();
+      initAttendancePage();
+    });
+  </script>
+</body>
+</html>
+

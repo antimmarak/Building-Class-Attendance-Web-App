@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Attendance | Students</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <script defer src="./js/supabase.js"></script>
+  <script defer src="./js/auth.js"></script>
+  <script defer src="./js/dashboard.js"></script>
+</head>
+<body data-theme="light">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">Attendance</div>
+      <nav>
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./attendance.html">Attendance</a>
+        <a class="active" href="./students.html">Students</a>
+        <a href="./classes.html">Classes</a>
+        <a href="./subjects.html">Subjects</a>
+        <a href="./history.html">History</a>
+      </nav>
+      <button class="btn small" id="logoutBtn">Logout</button>
+    </aside>
+    <main class="content">
+      <header class="topbar">
+        <button class="icon" id="menuToggle">☰</button>
+        <div class="spacer"></div>
+        <button class="btn small" id="themeToggle">Toggle Theme</button>
+      </header>
+
+      <section class="card">
+        <h3>Add Student</h3>
+        <div class="grid three">
+          <div class="form-field">
+            <label>Name</label>
+            <input id="studentName" type="text" placeholder="Student name" />
+          </div>
+          <div class="form-field">
+            <label>Roll</label>
+            <input id="studentRoll" type="text" placeholder="Roll no." />
+          </div>
+          <div class="form-field">
+            <label>Class</label>
+            <select id="studentClass"></select>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="addStudentBtn" class="btn primary">Add</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>All Students</h3>
+        <div class="grid two">
+          <div class="form-field">
+            <label>Filter by Class</label>
+            <select id="filterClass"></select>
+          </div>
+          <div class="form-field">
+            <label>Search</label>
+            <input id="studentSearch" type="text" placeholder="Search by name or roll" />
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAuthState({ requireAuth: true });
+      initLayoutControls();
+      initStudentsPage();
+    });
+  </script>
+</body>
+</html>
+

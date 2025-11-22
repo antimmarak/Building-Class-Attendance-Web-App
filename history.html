@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Attendance | History</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <script defer src="./js/supabase.js"></script>
+  <script defer src="./js/auth.js"></script>
+  <script defer src="./js/attendance.js"></script>
+</head>
+<body data-theme="light">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">Attendance</div>
+      <nav>
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./attendance.html">Attendance</a>
+        <a href="./students.html">Students</a>
+        <a href="./classes.html">Classes</a>
+        <a href="./subjects.html">Subjects</a>
+        <a class="active" href="./history.html">History</a>
+      </nav>
+      <button class="btn small" id="logoutBtn">Logout</button>
+    </aside>
+    <main class="content">
+      <header class="topbar">
+        <button class="icon" id="menuToggle">☰</button>
+        <div class="spacer"></div>
+        <button class="btn small" id="themeToggle">Toggle Theme</button>
+      </header>
+
+      <section class="card">
+        <h3>Attendance History</h3>
+        <div class="grid three">
+          <div class="form-field">
+            <label>Class</label>
+            <select id="historyClass"></select>
+          </div>
+          <div class="form-field">
+            <label>From</label>
+            <input id="historyFrom" type="date" />
+          </div>
+          <div class="form-field">
+            <label>To</label>
+            <input id="historyTo" type="date" />
+          </div>
+        </div>
+        <div class="actions">
+          <button id="loadHistoryBtn" class="btn">Load History</button>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Class</th>
+                <th>Subject</th>
+                <th>Student</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="historyRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAuthState({ requireAuth: true });
+      initLayoutControls();
+      initHistoryPage();
+    });
+  </script>
+</body>
+</html>
+

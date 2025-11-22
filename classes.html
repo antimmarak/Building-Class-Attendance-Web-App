@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Attendance | Classes</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <script defer src="./js/supabase.js"></script>
+  <script defer src="./js/auth.js"></script>
+  <script defer src="./js/dashboard.js"></script>
+</head>
+<body data-theme="light">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">Attendance</div>
+      <nav>
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./attendance.html">Attendance</a>
+        <a href="./students.html">Students</a>
+        <a class="active" href="./classes.html">Classes</a>
+        <a href="./subjects.html">Subjects</a>
+        <a href="./history.html">History</a>
+      </nav>
+      <button class="btn small" id="logoutBtn">Logout</button>
+    </aside>
+    <main class="content">
+      <header class="topbar">
+        <button class="icon" id="menuToggle">☰</button>
+        <div class="spacer"></div>
+        <button class="btn small" id="themeToggle">Toggle Theme</button>
+      </header>
+
+      <section class="card">
+        <h3>Add Class</h3>
+        <div class="grid two">
+          <div class="form-field">
+            <label>Class name</label>
+            <input id="className" type="text" placeholder="e.g., Grade 7 - A" />
+          </div>
+        </div>
+        <div class="actions">
+          <button id="addClassBtn" class="btn primary">Add</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>All Classes</h3>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="classesTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAuthState({ requireAuth: true });
+      initLayoutControls();
+      initClassesPage();
+    });
+  </script>
+</body>
+</html>
+
